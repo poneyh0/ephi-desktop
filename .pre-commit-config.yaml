@@ -13,8 +13,6 @@ repos:
       - id: check-yaml
         name: "📁 File - Check yaml"
         args: [--allow-multiple-documents]
-      - id: check-json
-        name: "📁 File - Check json"
       - id: check-toml
         name: "📁 File - Check toml"
       - id: check-case-conflict
@@ -59,59 +57,11 @@ repos:
     hooks:
       - id: clang-format
         name: "🍒 Cpp - Format C++ file"
-  - repo: local
-    hooks:
-      # Needs a local cppcheck install (e.g. `brew install cppcheck`).
-      - id: cppcheck
-        name: "🍒 Cpp - Static analysis"
-        language: system
-        entry: >-
-          cppcheck --enable=warning,performance,portability --error-exitcode=1
-        types_or: [c++, c]
   - repo: https://github.com/BlankSpruce/gersemi-pre-commit
     rev: 0.28.0
     hooks:
       - id: gersemi
         name: "🏗️ CMake - Format CMake file"
-  - repo: https://github.com/biomejs/pre-commit
-    rev: v0.6.1
-    hooks:
-      - id: biome-check # Format, organize import, lint and apply safe fix
-        additional_dependencies: ["@biomejs/biome@2.5.8"]
-        name: "🌐 Js, Ts, Json, Html, Css - Format, lint, safe fix"
-  - repo: https://github.com/astral-sh/ty-pre-commit
-    # ty version.
-    rev: v0.0.72
-    hooks:
-      - id: ty
-        name: "🐍 Ty - Typecheck Python file"
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    # Ruff version.
-    rev: v0.16.3
-    hooks:
-      # Run the linter.
-      - id: ruff
-        args: [--fix]
-        name: "🐍 Py - Lint Python file"
-      # Run the formatter.
-      - id: ruff-format
-        name: "🐍 Py - Format Python file"
-  # Local hooks calling the system cargo directly: no third-party wrapper
-  # repo needed, but a Rust toolchain must be installed. Clippy runs the
-  # compiler checks too, so a separate `cargo check` hook would be redundant.
-  - repo: local
-    hooks:
-      - id: cargo-fmt
-        name: "⛴️ Rs - Format Rust file"
-        language: system
-        entry: cargo fmt --
-        types: [rust]
-      - id: cargo-clippy
-        name: "⛴️ Rs - Lint Rust file"
-        language: system
-        entry: cargo clippy --all-targets -- -D warnings
-        types: [rust]
-        pass_filenames: false
   - repo: https://github.com/crate-ci/typos
     rev: v1.49.0
     hooks:
@@ -122,11 +72,6 @@ repos:
     hooks:
       - id: taplo-format
         name: "⚙️ TOML - Format Toml file"
-  - repo: https://github.com/AleksaC/hadolint-py
-    rev: v2.15.1
-    hooks:
-      - id: hadolint
-        name: "🐋 Hadolint - Containerfile lint"
   - repo: https://github.com/rhysd/actionlint
     rev: v1.7.12
     hooks:

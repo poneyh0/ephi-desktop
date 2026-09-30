@@ -28,8 +28,6 @@ Some hooks need their language runtime installed locally to run:
 
 - **Markdown / Yaml / Git hooks**: none, `pre-commit` manages them.
 - **C++ (`clang-format`)**: none extra, the hook ships its own binary.
-- **C++ (`cppcheck`)**: a local install of cppcheck
-  (e.g. `brew install cppcheck` or `apt install cppcheck`).
 - **CMake (`gersemi`)**: none, `pre-commit` manages it.
 - **Js, Ts, Json, Html, Css (`biome`)**: Node.js (pulled automatically by
   `pre-commit` via `additional_dependencies`).
@@ -66,7 +64,6 @@ and adapt the tools called and remove tools that are not useful to you.
 | adrienverge/yamllint | yamllint | Lint Yaml file |
 | google/yamlfmt | yamlfmt | Format Yaml file |
 | pre-commit/mirrors-clang-format | clang-format | Format C++ file |
-| local (system cppcheck) | cppcheck | Static analysis of C/C++ files |
 | BlankSpruce/gersemi | gersemi | Format CMake files |
 | biomejs/pre-commit | biome-check | Format, organize imports, lint and apply safe fixes for Js, Ts, Json, Html, Css |
 | astral-sh/ty-pre-commit | ty | Typecheck Python file |
@@ -77,6 +74,9 @@ and adapt the tools called and remove tools that are not useful to you.
 
 ### Not run by pre-commit
 
+- **`cppcheck`**: C/C++ static analysis,
+  run by GitHub Actions on pull requests and pushes to `main`.
+  The workflow installs cppcheck on its Ubuntu runner.
 - **`.clang-tidy`**: C++ static analysis configuration,
   read directly by clangd-based IDEs
   (VS Code, CLion, Neovim...) for inline diagnostics, and usable in CI.
