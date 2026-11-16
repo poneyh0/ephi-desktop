@@ -29,11 +29,11 @@ Some hooks need their language runtime installed locally to run:
 - **Markdown / Yaml / Git hooks**: none, `pre-commit` manages them.
 - **C++ (`clang-format`)**: none extra, the hook ships its own binary.
 - **CMake (`gersemi`)**: none, `pre-commit` manages it.
-- **Js, Ts, Json, Html, Css (`biome`)**: Node.js (pulled automatically by
-  `pre-commit` via `additional_dependencies`).
+- **Js, Ts, Json, Html, Css (`biome`)**: Node.js
+  (pulled automatically by `pre-commit` via `additional_dependencies`).
 - **Python (`ruff`, `ty`)**: none extra, the hooks ship their own binary.
-- **Rust (`cargo-fmt`, `cargo-clippy`)**: a local Rust toolchain (`cargo`)
-  already installed.
+- **Rust (`cargo-fmt`, `cargo-clippy`)**:
+  a local Rust toolchain (`cargo`) already installed.
 
 ## License 🔑
 
